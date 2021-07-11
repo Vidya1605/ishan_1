@@ -12,6 +12,8 @@ var block51, block52,  block53,  block54,  block55,  block56,  block57,  block58
 var block61, block62,  block63,  block64,  block65,  block66;
 var blockGroup;
 
+var targetE, targetP;
+
 
 
 function preload(){
@@ -27,14 +29,18 @@ function preload(){
 
 function setup() {
     createCanvas(displayWidth,displayHeight);
-    player= createSprite(400, 200, 50, 50);
+    player= createSprite(446, 486, 50, 50);
+    player.debug=true
+    player.setCollider("circle",0,0,14)
     player.addImage(playerImg)
     player.addAnimation("player" , playerImg);
     player.addAnimation("playerRun", runImg)
     player.addAnimation("playerJump", jumpImg)
     player.addAnimation("playerFall", fallImg)
+    targetE= createSprite(446, 486, 10, 10);
+    targetP= createSprite(850, 70, 10, 10);
 
-    enemy1= createSprite(880, 200, 10, 10);
+    enemy1= createSprite(850, 70, 10, 10);
     enemy1.shapeColor = "blue";
 
     blockGroup = new Group();
@@ -155,4 +161,5 @@ function draw() {
   player.collide(blockGroup);
 
   drawSprites();
+  text(mouseX+","+mouseY, mouseX,mouseY)
 }
